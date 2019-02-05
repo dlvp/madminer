@@ -145,21 +145,26 @@ def export_run_card(template_filename, run_card_filename, systematics=None):
 
     # Remove old entries
     for i, line in enumerate(run_card_lines):
-        comment_pos = line.find("#")
-        if comment_pos >= 0:
-            line = line[:comment_pos]
-        comment_pos = line.find("!")
-        if comment_pos >= 0:
-            line = line[:comment_pos]
-
+        line_content = line
+        # Remove comments
         try:
-            line_value, line_key = line.split("=")
-        except ValueError:
+            line_content = line_content.split("#")[0]
+        except:
+            pass
+        try:
+            line_content = line_content.split("!")[0]
+        except:
+            pass
+
+        # Split at last equal sign
+        elements = line_content.split("=")
+        if len(elements) < 2:
             continue
-        line_key = line_key.strip()
+        line_value = "=".join(elements[:-1])
+        line_key = elements[-1].strip()
 
         if line_key in settings:
-            del run_card_lines[i]
+            run_card_lines[i] = "# {} # Commented out by MadMiner".format(line)
             continue
 
     # Add new entries - sytematics
@@ -190,11 +195,12 @@ def create_systematics_arguments(systematics):
         systematics_arguments.append("'--muf={}'".format(systematics["mu"]))
         systematics_arguments.append("'--together=mur,muf'")
 
-    elif "mur" in systematics:
-        systematics_arguments.append("'--mur={}'".format(systematics["mur"]))
+    else:
+        if "mur" in systematics:
+            systematics_arguments.append("'--mur={}'".format(systematics["mur"]))
 
-    elif "muf" in systematics:
-        systematics_arguments.append("'--muf={}'".format(systematics["muf"]))
+        if "muf" in systematics:
+            systematics_arguments.append("'--muf={}'".format(systematics["muf"]))
 
     if "pdf" in systematics:
         systematics_arguments.append("'--pdf={}'".format(systematics["pdf"]))
