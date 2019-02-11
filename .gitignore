@@ -121,6 +121,9 @@ py.py
 tests/data
 
 # Data
+examples/example4_systematics_DY/data
+examples/example4_systematics_DY/logs
+
 examples/morphing_basis/animations
 
 examples/tutorial_delphes/temp
