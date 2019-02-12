@@ -1,0 +1,9 @@
+
+        launch /Users/dpappadopulo/Projects/~Physics/madminer/examples/example4_systematics_DY/data/mg_processes/DY_sys/
+        shower=OFF
+        detector=OFF
+        analysis=OFF
+        madspin=OFF
+        reweight=ON
+        done
+        
