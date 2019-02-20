@@ -1,0 +1,118 @@
+#************************************************************
+#*                     MadGraph5_aMC@NLO                    *
+#*                                                          *
+#*                *                       *                 *
+#*                  *        * *        *                   *
+#*                    * * * * 5 * * * *                     *
+#*                  *        * *        *                   *
+#*                *                       *                 *
+#*                                                          *
+#*                                                          *
+#*         VERSION 2.6.4                 2018-11-09         *
+#*                                                          *
+#*    The MadGraph5_aMC@NLO Development Team - Find us at   *
+#*    https://server06.fynu.ucl.ac.be/projects/madgraph     *
+#*                                                          *
+#************************************************************
+#*                                                          *
+#*               Command File for MadGraph5_aMC@NLO         *
+#*                                                          *
+#*     run as ./bin/mg5_aMC  filename                       *
+#*                                                          *
+#************************************************************
+set default_unset_couplings 99
+set group_subprocesses Auto
+set ignore_six_quark_processes False
+set loop_optimized_output True
+set loop_color_flows False
+set gauge unitary
+set complex_mass_scheme False
+set max_npoint_for_channel 0
+import model SM4fLL_UFO
+define p = g u c d s u~ c~ d~ s~
+define j = g u c d s u~ c~ d~ s~
+define l+ = e+ mu+
+define l- = e- mu-
+define vl = ve vm vt
+define vl~ = ve~ vm~ vt~
+generate u u~ > mu+ mu- NP=2 QED=99 QCD=0
+output /Users/dpappadopulo/Projects/~Physics/madminer/examples/example4_systematics_DY/data/mg_processes/DY_sys/
+quit
+Traceback (most recent call last):
+  File "/Users/dpappadopulo/Projects/~Physics/MG5_aMC_v2_6_4/madgraph/interface/extended_cmd.py", line 1501, in onecmd
+    return self.onecmd_orig(line, **opt)
+  File "/Users/dpappadopulo/Projects/~Physics/MG5_aMC_v2_6_4/madgraph/interface/extended_cmd.py", line 1450, in onecmd_orig
+    return func(arg, **opt)
+  File "/Users/dpappadopulo/Projects/~Physics/MG5_aMC_v2_6_4/madgraph/interface/master_interface.py", line 499, in do_quit
+    return self.cmd.do_quit(self, *args, **opts)
+  File "/Users/dpappadopulo/Projects/~Physics/MG5_aMC_v2_6_4/madgraph/interface/madgraph_interface.py", line 2975, in do_quit
+    self.do_install('update --mode=mg5_end')
+  File "/Users/dpappadopulo/Projects/~Physics/MG5_aMC_v2_6_4/madgraph/interface/master_interface.py", line 466, in do_install
+    self.cmd.do_install(self, *args, **opts)
+  File "/Users/dpappadopulo/Projects/~Physics/MG5_aMC_v2_6_4/madgraph/interface/madgraph_interface.py", line 5859, in do_install
+    self.install_update(['update']+install_options['update_options'],wget=program)
+  File "/Users/dpappadopulo/Projects/~Physics/MG5_aMC_v2_6_4/madgraph/interface/madgraph_interface.py", line 6550, in install_update
+    int(time.time()) - 3600 * 24 * (self.options['auto_update'] -1))
+TypeError: unsupported operand type(s) for -: 'str' and 'int'
+                          MadGraph5_aMC@NLO Options    
+                          ----------------    
+        complex_mass_scheme 	:	False
+    default_unset_couplings 	:	99
+                      gauge 	:	unitary
+         group_subprocesses 	:	Auto
+  ignore_six_quark_processes 	:	False
+           loop_color_flows 	:	False
+      loop_optimized_output 	:	True
+  low_mem_multicore_nlo_generation 	:	False
+     max_npoint_for_channel 	:	0
+               stdout_level 	:	20 (user set)
+
+                         MadEvent Options    
+                          ----------------    
+     automatic_html_opening 	:	True
+                    nb_core 	:	None
+        notification_center 	:	True
+                   run_mode 	:	2
+
+                      Configuration Options    
+                      ---------------------    
+                        OLP 	:	MadLoop
+                    amcfast 	:	amcfast-config
+                   applgrid 	:	applgrid-config
+                auto_update 	:	7
+         cluster_local_path 	:	None
+           cluster_nb_retry 	:	1
+              cluster_queue 	:	None (user set)
+         cluster_retry_wait 	:	300
+               cluster_size 	:	100
+      cluster_status_update 	:	(600, 30)
+          cluster_temp_path 	:	None
+               cluster_type 	:	condor
+                    collier 	:	./HEPTools/lib
+               cpp_compiler 	:	None
+             crash_on_error 	:	False
+               delphes_path 	:	./Delphes
+                 eps_viewer 	:	None
+        exrootanalysis_path 	:	./ExRootAnalysis
+              f2py_compiler 	:	None
+                    fastjet 	:	None (user set)
+           fortran_compiler 	:	None
+                      golem 	:	None (user set)
+                 hepmc_path 	:	None (user set)
+                  hwpp_path 	:	None (user set)
+                     lhapdf 	:	lhapdf-config
+          madanalysis5_path 	:	None (user set)
+           madanalysis_path 	:	./MadAnalysis
+  mg5amc_py8_interface_path 	:	None (user set)
+                      ninja 	:	./HEPTools/lib
+        output_dependencies 	:	external
+                      pjfry 	:	None (user set)
+            pythia-pgs_path 	:	./pythia-pgs
+               pythia8_path 	:	None (user set)
+                    samurai 	:	None
+               syscalc_path 	:	./SysCalc
+                    td_path 	:	./td
+                text_editor 	:	None
+                thepeg_path 	:	None (user set)
+                    timeout 	:	60
+                web_browser 	:	None
